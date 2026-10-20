@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Generated reports
+fp_report.json
+security_report.json
+security_report.sarif
