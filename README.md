@@ -44,7 +44,7 @@ On macOS, the analyzer attempts common Homebrew LLVM library paths as a fallback
 Scan the included intentionally risky example and create a JSON report:
 
 ```bash
-python analyzer_fixed.py security_cases.c \
+python analyzer.py security_cases.c \
   --config config.json \
   --format json \
   --out security_report
@@ -53,8 +53,8 @@ python analyzer_fixed.py security_cases.c \
 This creates `security_report.json`. Other report formats:
 
 ```bash
-python analyzer_fixed.py security_cases.c --config config.json --format html --out security_report
-python analyzer_fixed.py security_cases.c --config config.json --format sarif --out security_report
+python analyzer.py security_cases.c --config config.json --format html --out security_report
+python analyzer.py security_cases.c --config config.json --format sarif --out security_report
 ```
 
 `--out` is the output-file basename; the analyzer adds `.json`, `.html`, or `.sarif` based on `--format`.
@@ -62,13 +62,13 @@ python analyzer_fixed.py security_cases.c --config config.json --format sarif --
 Scan a file or a directory:
 
 ```bash
-python analyzer_fixed.py ./src --config config.json --format sarif --out sast_report
+python analyzer.py ./src --config config.json --format sarif --out sast_report
 ```
 
 Use the exit-code option in CI when findings should fail the job:
 
 ```bash
-python analyzer_fixed.py ./src --config config.json --format json --out sast_report --exit-code
+python analyzer.py ./src --config config.json --format json --out sast_report --exit-code
 ```
 
 Exit statuses:
@@ -108,7 +108,7 @@ Unsupported formats, pointer expressions, unknown capacities, or uncertain sourc
 ## Run tests
 
 ```bash
-python -m unittest -v test_analyzer_fixed.py
+python -m unittest -v test_analyzer.py
 ```
 
 The unit suite covers configuration validation, directory exclusions, comment suppressions, HTML escaping, Clang builtin-name normalization, limited buffer checks, SARIF rule metadata, and error handling. The GitHub Actions `tests.yml` workflow additionally runs a real `libclang` smoke scan against `security_cases.c` and checks the generated SARIF's basic structure.
