@@ -7,7 +7,7 @@ The analyzer can emit JSON, HTML, or SARIF 2.1.0. SARIF findings use stable rule
 From the repository root:
 
 ```bash
-python analyzer_fixed.py security_cases.c \
+python analyzer.py security_cases.c \
   --config config.json \
   --format sarif \
   --out security_report
