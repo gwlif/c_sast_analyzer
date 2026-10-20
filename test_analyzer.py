@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from types import SimpleNamespace
 
-import analyzer_fixed as analyzer
+import analyzer
 
 
 class FakeType:
