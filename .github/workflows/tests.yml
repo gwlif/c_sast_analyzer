@@ -20,4 +20,4 @@ jobs:
           python-version: "3.12"
 
       - name: Run unit tests
-        run: python -m unittest -v test_analyzer_fixed.py
+        run: python -m unittest -v test_analyzer.py
